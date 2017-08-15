@@ -160,6 +160,21 @@ var data = [{
   lat: 56.7745678,
   lng: 47.9663981,
   link: 'images/31.jpg'
+}, {
+  name: 'д. Люльпаны',
+  lat: 56.8249022,
+  lng: 47.5592619,
+  link: 'images/32.jpg'
+}, {
+  name: 'д. Малая Речка',
+  lat: 56.8431608,
+  lng: 47.5313681,
+  link: 'images/33.jpg'
+}, {
+  name: 'с. Алексеиха',
+  lat: 56.9035478,
+  lng: 47.3815747,
+  link: 'images/34.jpg'
 }];
 
 function initMap() {
@@ -171,12 +186,13 @@ function initMap() {
     }
   });
 
+  var dimension = Math.ceil(Math.sqrt(data.length));
   for (var i = 0; i < data.length; i++) {
     var bell = data[i];
     var icon = {
       url: THUMBNAIL_SPRITE,
       size: new google.maps.Size(THUMBNAIL_SIZE, THUMBNAIL_SIZE),
-      origin: new google.maps.Point(THUMBNAIL_SIZE * i, 0)
+      origin: new google.maps.Point(THUMBNAIL_SIZE * Math.floor(i % dimension), THUMBNAIL_SIZE * Math.floor(i / dimension))
     };
     var marker = new google.maps.Marker({
       position: {
