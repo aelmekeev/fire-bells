@@ -187,7 +187,7 @@ ymaps.ready(function() {
   var dimension = Math.ceil(Math.sqrt(data.length));
   for (var i = 0; i < data.length; i++) {
     var bell = data[i];
-    var icon = new ymaps.Placemark([bell.lat, bell.lng], {
+    var thumbnail = new ymaps.Placemark([bell.lat, bell.lng], {
       hintContent: bell.name,
 	  link: bell.link
     }, {
@@ -208,6 +208,6 @@ ymaps.ready(function() {
       });
       $('#lightbox').trigger('click');
     });
-    myMap.geoObjects.add(icon);
+    myMap.geoObjects.add(thumbnail);
   }
 });
