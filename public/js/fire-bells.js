@@ -198,7 +198,16 @@ ymaps.ready(function() {
       ],
       iconImageHref: THUMBNAIL_SPRITE,
       iconImageSize: [THUMBNAIL_SIZE, THUMBNAIL_SIZE]
-    })
+    });
+    thumbnail.events.add(['click'], function(e) {
+      var data = e.originalEvent.target.properties._data;
+      $('#lightbox').attr({
+        href: data.link,
+        'data-lightbox': data.hintContent,
+		'data-title': data.hintContent
+      });
+      $('#lightbox').trigger('click');
+    });
     myMap.geoObjects.add(icon);
   }
 });
