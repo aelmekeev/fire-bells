@@ -177,38 +177,37 @@ var data = [{
   link: 'images/034.jpg'
 }];
 
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
+ymaps.ready(function() {
+  var myMap = new ymaps.Map('map', {
+    center: [MAP_CENTER_LAT, MAP_CENTER_LNG],
     zoom: MAP_ZOOM,
-    center: {
-      lat: MAP_CENTER_LAT,
-      lng: MAP_CENTER_LNG
-    }
+    controls: ['zoomControl', 'typeSelector', 'geolocationControl', 'rulerControl']
   });
 
   var dimension = Math.ceil(Math.sqrt(data.length));
   for (var i = 0; i < data.length; i++) {
     var bell = data[i];
-    var icon = {
-      url: THUMBNAIL_SPRITE,
-      size: new google.maps.Size(THUMBNAIL_SIZE, THUMBNAIL_SIZE),
-      origin: new google.maps.Point(THUMBNAIL_SIZE * Math.floor(i % dimension), THUMBNAIL_SIZE * Math.floor(i / dimension))
-    };
-    var marker = new google.maps.Marker({
-      position: {
-        lat: bell.lat,
-        lng: bell.lng
-      },
-      map: map,
-      icon: icon
+    var thumbnail = new ymaps.Placemark([bell.lat, bell.lng], {
+      hintContent: bell.name,
+	  link: bell.link
+    }, {
+      iconLayout: 'default#image',
+      iconImageClipRect: [
+        [THUMBNAIL_SIZE * Math.floor(i % dimension), THUMBNAIL_SIZE * Math.floor(i / dimension)],
+        [THUMBNAIL_SIZE * Math.floor(i % dimension) + THUMBNAIL_SIZE, THUMBNAIL_SIZE * Math.floor(i / dimension) + THUMBNAIL_SIZE]
+      ],
+      iconImageHref: THUMBNAIL_SPRITE,
+      iconImageSize: [THUMBNAIL_SIZE, THUMBNAIL_SIZE]
     });
-
-    addListeners(marker, bell);
-  }
-
-  function addListeners(marker, bell) {
-    marker.addListener('click', function() {
-      // todo
+    thumbnail.events.add(['click'], function(e) {
+      var data = e.originalEvent.target.properties._data;
+      $('#lightbox-link').attr({
+        href: data.link,
+        'data-lightbox': data.hintContent,
+		'data-title': data.hintContent
+      });
+      $('#lightbox-link').trigger('click');
     });
+    myMap.geoObjects.add(thumbnail);
   }
-}
+});
