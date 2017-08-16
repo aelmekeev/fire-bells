@@ -187,7 +187,7 @@ ymaps.ready(function() {
   var dimension = Math.ceil(Math.sqrt(data.length));
   for (var i = 0; i < data.length; i++) {
     var bell = data[i];
-    var icon = new ymaps.Placemark([bell.lat, bell.lng], {
+    var thumbnail = new ymaps.Placemark([bell.lat, bell.lng], {
       hintContent: bell.name,
 	  link: bell.link
     }, {
@@ -198,7 +198,16 @@ ymaps.ready(function() {
       ],
       iconImageHref: THUMBNAIL_SPRITE,
       iconImageSize: [THUMBNAIL_SIZE, THUMBNAIL_SIZE]
-    })
-    myMap.geoObjects.add(icon);
+    });
+    thumbnail.events.add(['click'], function(e) {
+      var data = e.originalEvent.target.properties._data;
+      $('#lightbox-link').attr({
+        href: data.link,
+        'data-lightbox': data.hintContent,
+		'data-title': data.hintContent
+      });
+      $('#lightbox-link').trigger('click');
+    });
+    myMap.geoObjects.add(thumbnail);
   }
 });
