@@ -175,6 +175,11 @@ var data = [{
   lat: 56.9035478,
   lng: 47.3815747,
   link: 'images/034.jpg'
+}, {
+  name: 'д. Большие Памъялы',
+  lat: 56.706354,
+  lng: 46.663207,
+  link: 'images/035.jpg'
 }];
 
 ymaps.ready(function() {
