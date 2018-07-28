@@ -175,6 +175,21 @@ var data = [{
   lat: 56.9035478,
   lng: 47.3815747,
   link: 'images/034.jpg'
+}, {
+  name: 'с. Старый Торъял',
+  lat: 56.956186,
+  lng: 48.779077,
+  link: 'images/035.jpg'
+}, {
+  name: 'с. Старый Торъял',
+  lat: 56.968030,
+  lng: 48.797585,
+  link: 'images/036.jpg'
+}, {
+  name: 'д. Нижний Ядыкбеляк',
+  lat: 56.974848,
+  lng: 48.819490,
+  link: 'images/037.jpg'
 }];
 
 ymaps.ready(function() {
