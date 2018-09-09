@@ -190,6 +190,21 @@ var data = [{
   lat: 56.974848,
   lng: 48.819490,
   link: 'images/037.jpg'
+}, {
+  name: 'д. Кюшнур',
+  lat: :56.7858124,
+  lng: 47.8077049,
+  link: 'images/038.jpg'
+}, {
+  name: 'д. Орешкино',
+  lat: 56.7297935,
+  lng: 47.8525085,
+  link: 'images/039.jpg'
+}, {
+  name: 'д. Нюхта',
+  lat: 56.7232323,
+  lng: 47.8791046,
+  link: 'images/040.jpg'
 }];
 
 ymaps.ready(function() {
