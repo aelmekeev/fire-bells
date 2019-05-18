@@ -205,6 +205,16 @@ var data = [{
     lat: 56.7232323,
     lng: 47.8791046,
     link: 'images/040.jpg'
+}, {
+    name: 'д. Игнатьево',
+    lat: 56.682992,
+    lng: 48.017156,
+    link: 'images/041.jpg'
+}, {
+    name: 'д. Паганур',
+    lat: 56.644155,
+    lng: 48.085267,
+    link: 'images/042.jpg'
 }];
 
 ymaps.ready(function () {
