@@ -7,4 +7,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rack
+  rack (= 2.0.7)
+
+BUNDLED WITH
+   1.17.2
