@@ -1,3 +1,3 @@
 source :rubygems
 
-gem 'rack'
+gem 'rack', '2.0.7'
