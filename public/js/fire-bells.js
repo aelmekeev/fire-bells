@@ -22,7 +22,7 @@ ymaps.ready(function () {
         .then(res => {
             const data = res.records
             const dimension = Math.ceil(Math.sqrt(data.length))
-            data.forEach(row => {
+            data.forEach((row, i) => {
                 const bell = row.fields
                 const thumbnail = new ymaps.Placemark([bell.lat, bell.lng], {
                     hintContent: bell.place,
@@ -37,15 +37,16 @@ ymaps.ready(function () {
                     iconImageSize: [THUMBNAIL_SIZE, THUMBNAIL_SIZE]
                 })
                 thumbnail.events.add(['click'], e => {
-                    const data = e.originalEvent.target.properties._data
-                    $('#lightbox-link').attr({
-                        href: data.href,
-                        'data-lightbox': data.hintContent,
-                        'data-title': data.hintContent
-                    });
-                    $('#lightbox-link').trigger('click');
-                });
-                myMap.geoObjects.add(thumbnail);
+                    const d = e.originalEvent.target.properties._data
+                    $('#lightbox-link')
+                        .attr({
+                            href: d.href,
+                            'data-lightbox': d.hintContent,
+                            'data-title': d.hintContent
+                        })
+                        .trigger('click')
+                })
+                myMap.geoObjects.add(thumbnail)
             })
         })
-});
+})
