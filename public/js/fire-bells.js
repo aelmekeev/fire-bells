@@ -26,7 +26,7 @@ ymaps.ready(function () {
                 const bell = row.fields
                 const thumbnail = new ymaps.Placemark([bell.lat, bell.lng], {
                     hintContent: bell.place,
-                    href: bell.photo.url
+                    href: bell.photo[0].url
                 }, {
                     iconLayout: 'default#image',
                     iconImageClipRect: [
