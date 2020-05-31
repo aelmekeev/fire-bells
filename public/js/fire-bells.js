@@ -1,5 +1,5 @@
 const URL = 'https://api.airtable.com/v0/appIqynBuQ0qF9dTc/Data?maxRecords=1000&view=Grid%20view'
-const KEY = 'keyCGSJ1JKlY0t7kU'
+const KEY = 'key14m5gdbYjMRMyg'
 
 const MAP_CENTER_LAT = 56.632057
 const MAP_CENTER_LNG = 47.882995
